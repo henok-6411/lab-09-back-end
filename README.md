@@ -6,7 +6,7 @@ Estimate of time needed to complete: _____
 
 Start time: 6:20pm
 
-Finish time: _____
+Finish time: 8:20pm
 
 Actual time needed to complete: _____
 

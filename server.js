@@ -41,7 +41,7 @@ function moviesHandler(request, response) {
     .then(data => {
       // console.log(data);
       const movieData = data.body.results.map(value => {
-        console.log(value);
+        // console.log(value);
         return new Movie(value)
 
       });
@@ -61,11 +61,22 @@ function Movie(movieName) {
   this.overview = movieName.overview;
   this.average_votes = movieName.vote_avarage;
   this.total_votes = movieName.vote_count;
-  this.image_url = movieName.poster_path;
+  this.image_url = `https://image.tmdb.org/t/p/w500${movieName.poster_path}`;
   this.popularity = movieName.popularity;
   this.released_on = movieName.release_date;
 
 }
+////// YELP CONSTRACTOR FUNCTION
+
+// function Yelp(yelpData) {
+//   this.name = 
+//     this.image_url =
+//     this.price =
+//     this.rating =
+//     this.url = 
+// }
+
+//////  
 
 
 // Location Functions      
