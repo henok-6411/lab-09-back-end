@@ -69,12 +69,14 @@ function Movie(movieName) {
 ////// YELP CONSTRACTOR FUNCTION
 
 // function Yelp(yelpData) {
-//   this.name =
+//   this.name = 
 //     this.image_url =
 //     this.price =
 //     this.rating =
 //     this.url = 
 // }
+
+//////  
 
 
 // Location Functions      
