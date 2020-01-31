@@ -1,14 +1,10 @@
 'use strict';
-
-// Load environment variables from the .env
-
+/// OUR DEPENDENCIES. 
 const superagent = require('superagent');
 const pg = require('pg');
-
-// Application setup
 const client = new pg.Client(process.env.DATABASE_URL);
-client.on('error', err => console.err('pg problems', err));
-const location = {};
+client.on('error', err => console.error(err));
+client.connect();
 
 
 // Location Object Constructor
@@ -19,7 +15,7 @@ function Location(city, geoData) {
   this.longitude = geoData.lon;
 }
 
-// Location Functions      
+// Location Functions .   
 function locationHandler(request, response) {
   // city is a query parameter : example location?city='denver'&name='bob'
   let city = request.query.city;
@@ -63,10 +59,13 @@ function locationHandler(request, response) {
     });
 }
 
-// Error Handler
+//// ERROR HANDLER FUNCTION .
+
 function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
 
-module.exports = location;
+///// EXPORT LOCATIONHANDLER . 
+
+module.exports = locationHandler;
