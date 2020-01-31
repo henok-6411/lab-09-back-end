@@ -15,7 +15,6 @@ function eventsHandler(request, response) {
     const longitude = request.query.longitude;
     let eventurl = `http://api.eventful.com/json/events/search?app_key=${process.env.EVENTFUL_API_KEY}&keywords=books&where=${latitude},${longitude}&within=7&date=Future&page_size=20`;
     // console.log(eventurl);
-
     superagent.get(eventurl)
       .then(data => {
         // console.log('test');
@@ -33,7 +32,5 @@ function eventsHandler(request, response) {
 function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
-
 /// CONNECTING OUR MODULE. 
-
 module.exports = eventsHandler;

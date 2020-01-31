@@ -11,7 +11,6 @@ function Yelp(yelpData) {
   this.rating = yelpData.rating;
   this.url = yelpData.url;
 }
-
 // FUNCTION YELP HANDLER 
 function yelpHandler(request, response) {
   let city = request.query.city;
@@ -25,7 +24,6 @@ function yelpHandler(request, response) {
     .catch(() => {
       errorHandler('sorry!!', request, response);
     })
-
 }
 // ERROR HANDLER .
 function errorHandler(error, request, response) {
