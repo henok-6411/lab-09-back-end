@@ -28,7 +28,7 @@ app.get('/', (request, response) => {
 app.get('/location', locationHandler);
 app.get('/weather', weatherHandler);
 // app.get('/events', eventsHandler);
-//app.get('/yelp', yelpHandler);
+app.get('/yelp', yelpHandler);
 app.get('/movies', moviesHandler);
 
 // Movie Handler function 
@@ -51,6 +51,23 @@ function moviesHandler(request, response) {
     .catch(() => {
       errorHandler('sorry!!', request, response);
     })
+}
+// FUNCTION YELP HANDLER 
+
+function yelpHandler(request, response) {
+  let city = request.query.city;
+  let url = `https://api.yelp.com/v3/businesses/search?location=${city}`;
+  superagent.get(url)
+    .set('Authorization', `Bearer ${process.env.YELP_API_KEY}`)
+    .then(data => {
+      console.log(data);
+      let yelpCall = data.body.businesses.map(value => new Yelp(value));
+
+      response.send(yelpCall);
+    })
+    .catch(() => {
+      errorHandler('sorry!!', request, response);
+    })
 
 }
 
@@ -68,13 +85,13 @@ function Movie(movieName) {
 }
 ////// YELP CONSTRACTOR FUNCTION
 
-// function Yelp(yelpData) {
-//   this.name = 
-//     this.image_url =
-//     this.price =
-//     this.rating =
-//     this.url = 
-// }
+function Yelp(yelpData) {
+  this.name = yelpData.name;
+  this.image_url = yelpData.image_url;
+  this.price = yelpData.price;
+  this.rating = yelpData.rating;
+  this.url = yelpData.url;
+}
 
 //////  
 
@@ -191,14 +208,14 @@ function eventsHandler(request, response) {
     const latitude = request.query.latitude;
     const longitude = request.query.longitude;
     let eventurl = `http://api.eventful.com/json/events/search?app_key=${process.env.EVENTFUL_API_KEY}&keywords=books&where=${latitude},${longitude}&within=7&date=Future&page_size=20`;
-    console.log(eventurl);
+    // console.log(eventurl);
 
     superagent.get(eventurl)
       .then(data => {
-        console.log('test');
+        // console.log('test');
         let obj = JSON.parse(data.text);
         let parsedObj = obj.events.event;
-        console.log(parsedObj);
+        // console.log(parsedObj);
         let eventsarray = parsedObj.map(object => new Event(object));
         response.send(eventsarray);
       })

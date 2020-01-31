@@ -15,11 +15,11 @@ Number and name of feature: yelp
 
 Estimate of time needed to complete: _____
 
-Start time: _____
+Start time: 6:10pm
 
-Finish time: _____
+Finish time: 6:45pm
 
-Actual time needed to complete: _____
+Actual time needed to complete: 35minustes. 
 
 **Author**: Your Name Goes Here
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
