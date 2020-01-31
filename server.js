@@ -27,7 +27,7 @@ app.get('/', (request, response) => {
 
 app.get('/location', locationHandler);
 app.get('/weather', weatherHandler);
-// app.get('/events', eventsHandler);
+app.get('/events', eventsHandler);
 app.get('/yelp', yelpHandler);
 app.get('/movies', moviesHandler);
 
@@ -60,9 +60,7 @@ function yelpHandler(request, response) {
   superagent.get(url)
     .set('Authorization', `Bearer ${process.env.YELP_API_KEY}`)
     .then(data => {
-      console.log(data);
       let yelpCall = data.body.businesses.map(value => new Yelp(value));
-
       response.send(yelpCall);
     })
     .catch(() => {
@@ -140,28 +138,6 @@ function locationHandler(request, response) {
     });
 }
 
-/// location DB pg and cache
-// function getLocationData(city) {
-//   let SQL = `SELECT * FROM locations WHERE search_query = $1`;
-//   let values = [city];
-
-//   return client.query(SQL, values)
-//     .then(results => {
-//       if (results.rowCount) { return results.rows[0]; }
-//       else {
-
-
-
-//       }
-//     })
-// }
-
-
-
-
-
-
-
 
 
 // Weather Object Constructor
@@ -186,14 +162,16 @@ function weatherHandler(request, response) {
     const latitude = request.query.latitude;
     const longitude = request.query.longitude;
     let weatherURL = `https://api.darksky.net/forecast/${process.env.WEATHER_API_KEY}/${latitude},${longitude}`;
-    // console.log(weatherURL);
+    console.log(weatherURL);
 
     superagent.get(weatherURL)
       .then(data => {
+        console.log(data);
         const forecastArray = data.body.daily.data.map(object => new Weather(object));
         response.send(forecastArray);
       })
-  } catch (error) {
+  }
+  catch (error) {
     errorHandler('something went wrong', request, response);
   }
 }
