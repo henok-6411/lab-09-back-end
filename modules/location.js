@@ -8,8 +8,6 @@ const pg = require('pg');
 // Application setup
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', err => console.err('pg problems', err));
-const location = {};
-
 
 // Location Object Constructor
 function Location(city, geoData) {
@@ -19,14 +17,14 @@ function Location(city, geoData) {
   this.longitude = geoData.lon;
 }
 
-// Location Functions      
+// Location Functions
 function locationHandler(request, response) {
   // city is a query parameter : example location?city='denver'&name='bob'
   let city = request.query.city;
   let SQL = `SELECT * FROM locations WHERE city='${city}';`;
   // client.query executes sql commands
   client.query(SQL)
-    // .then waits for a promise to return and will be executed if the request was successful , read 
+    // .then waits for a promise to return and will be executed if the request was successful , read
     .then(results => {
       if (results.rows.length > 0) {
         response.send(results.rows[0]);
@@ -37,7 +35,7 @@ function locationHandler(request, response) {
           let key = process.env.GEOCODE_API_KEY;
           let url = `https://us1.locationiq.com/v1/search.php?key=${key}&q=${city}&format=json&limit=1`;
           /**
-           * superagent makes an api request 
+           * superagent makes an api request
            * .get get is the method used. You can use post for more secure requests
            *  */
           superagent.get(url)
@@ -69,4 +67,4 @@ function errorHandler(error, request, response) {
 }
 
 
-module.exports = location;
+module.exports = locationHandler;
