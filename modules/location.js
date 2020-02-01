@@ -1,12 +1,13 @@
 'use strict';
-/// OUR DEPENDENCIES. 
-// Henok G.
+
+/// OUR DEPENDENCIES.
+
 const superagent = require('superagent');
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
-client.on('error', err => console.error(err));
-client.connect();
 
+client.on('error', err => console.err('pg problems', err));
+client.connect();
 
 // Location Object Constructor
 function Location(city, geoData) {
@@ -16,7 +17,8 @@ function Location(city, geoData) {
   this.longitude = geoData.lon;
 }
 
-// Location Functions .   
+
+// Location Functions
 function locationHandler(request, response) {
   // city is a query parameter : example location?city='denver'&name='bob'
   let city = request.query.city;
@@ -36,7 +38,7 @@ function locationHandler(request, response) {
             .then(data => {
               const geoData = data.body[0]; //first item
               const locationData = new Location(city, geoData);
-              const { city, formatted_query, latitude, longitude } = locationData;
+              const { formatted_query, latitude, longitude } = locationData;
               let apiToSQL = `INSERT INTO locations (city, formattedquery, latitude, longitude) VALUES ('${city}', '${formatted_query}', '${latitude}', '${longitude}');`;
 
               client.query(apiToSQL);
@@ -58,6 +60,6 @@ function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
-
-///// EXPORT LOCATIONHANDLER . 
+///// EXPORT LOCATIONHANDLER .
 module.exports = locationHandler;
+

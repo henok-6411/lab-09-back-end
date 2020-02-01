@@ -1,10 +1,11 @@
 'use strict';
 
-//DEPENDENCIES 
-//Henok .G
+//DEPENDENCIES
+
 const superagent = require('superagent');
 
 ////// YELP CONSTRACTOR FUNCTION
+
 function Yelp(yelpData) {
   this.name = yelpData.name;
   this.image_url = yelpData.image_url;
@@ -12,7 +13,9 @@ function Yelp(yelpData) {
   this.rating = yelpData.rating;
   this.url = yelpData.url;
 }
-// FUNCTION YELP HANDLER 
+
+// FUNCTION YELP HANDLER
+
 function yelpHandler(request, response) {
   let city = request.query.city;
   let url = `https://api.yelp.com/v3/businesses/search?location=${city}`;
@@ -30,5 +33,6 @@ function yelpHandler(request, response) {
 function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
-/// CONNECT MODULE 
+/// CONNECT MODULE
+
 module.exports = yelpHandler;
