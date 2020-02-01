@@ -25,60 +25,24 @@ Actual time needed to complete: 35minustes.
 **Version**: 1.0.0 (increment the patch/fix version number if you make more commits past your first submission)
 
 ## Overview
-<!-- Provide a high level overview of what this application is and why you are building it, beyond the fact that it's an assignment for this class. (i.e. What's your problem domain?) -->
+We needed to update the city explorer app by using SQL in our backend API calls. We also needed to modularize our JS files.
 
 ## Getting Started
-<!-- What are the steps that a user must take in order to build this app on their own machine and get it running? -->
+In order to build this app, the user must first fork and clone down our repo!
+https://github.com/henok-6411/lab-09-back-end
 
 ## Architecture
-<!-- Provide a detailed description of the application design. What technologies (languages, libraries, etc) you're using, and any other relevant design information. -->
+This project uses JavaScript, SQL, npm, Node.js, express, cors, dotenv, and postgres.
 
 ## Change Log
-<!-- Use this area to document the iterative changes made to your application as each feature is successfully implemented. Use time stamps. Here's an examples:
+Welp. We totally forgot to fill this out as we went along.
 
-01-01-2001 4:59pm - Application now has a fully-functional express server, with a GET route for the location resource.
+On Wednesday, we scrapped together the movies API call, no problem. We got stumped on the Yelp API and almost figured that out as we left.
 
-## Credits and Collaborations
-<!-- Give credit (and a link) to other people or resources that helped you build this application. -->
--->
+On Thursday, we were able to get the Yelp API working after a bit of time. Then we fixed up the weather and events calls so all 4 columns display properly.
 
+With less than an hour to go, we had to try and figure out the modularizing of our js files. The demo code we were building off of was not functioning as expected so we went with a slightly different direction. We were able to separate our functions and get them to all centrally call from the server.js file.
 
-
-
+On Friday, we remotely worked together to merge all changes. We ran into some merge conflicts but as of 5:34pm Friday, we have resolved all of those and are now doing final commits before we submit the lab. Everything works as expected on local. But I cannot figure out why our Heroku deployment is being wonky. May revisit with a TA on Saturday. 
 
 
-## Feature Tasks
-
-Number and name of feature:  #1: Database
-
-Estimate of time needed to complete: 30 min
-
-Start time: 2:00pm
-
-Finish time: 2:45pm
-
-Actual time needed to complete: 45 min
-
-----------------------------------------------
-
-Number and name of feature:  #2: Server
-
-Estimate of time needed to complete: 1 hr
-
-Start time: 3:00pm
-
-Finish time: 5:00pm
-
-Actual time needed to complete: 2 hr
-
-----------------------------------------------
-
-Number and name of feature:  #3: Deploy
-
-Estimate of time needed to complete: 10 minutes
-
-Start time: 5:00pm
-
-Finish time: 5:15pm
-
-Actual time needed to complete: 15 minutes
