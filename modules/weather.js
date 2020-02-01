@@ -1,16 +1,14 @@
 'use strict';
-// DEPENDENCIES 
+// DEPENDENCIES
 const superagent = require('superagent');
-//WEATHER CONSTRACTOR . 
 
-const superagent = require('superagent');
-// WEATHER CONSTRACTOR 
+// WEATHER CONSTRACTOR
 function Weather(weatherObj) {
   this.forecast = weatherObj.summary
   this.time = new Date(weatherObj.time * 1000).toString().slice(0, 15);
 }
 
-// WEATHERHANDLER FUNCTION . 
+// WEATHERHANDLER FUNCTION
 function weatherHandler(request, response) {
   try {
     const latitude = request.query.latitude;
@@ -35,5 +33,5 @@ function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
-///CONNECTING MY FUNCTION WITH MODULE . 
+///CONNECTING MY FUNCTION WITH MODULE
 module.exports = weatherHandler;
