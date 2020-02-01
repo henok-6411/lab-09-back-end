@@ -1,16 +1,16 @@
 'use strict';
-
-// Load environment variables from the .env
+// DEPENDENCIES 
+const superagent = require('superagent');
+//WEATHER CONSTRACTOR . 
 
 const superagent = require('superagent');
-
-// Weather Object Constructor
-
+// WEATHER CONSTRACTOR 
 function Weather(weatherObj) {
   this.forecast = weatherObj.summary
   this.time = new Date(weatherObj.time * 1000).toString().slice(0, 15);
 }
 
+// WEATHERHANDLER FUNCTION . 
 function weatherHandler(request, response) {
   try {
     const latitude = request.query.latitude;
@@ -29,9 +29,11 @@ function weatherHandler(request, response) {
     errorHandler('something went wrong', request, response);
   }
 }
-// Error Handler
+
+// FUNCITON FOR ERRORHANDLER .
 function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
+///CONNECTING MY FUNCTION WITH MODULE . 
 module.exports = weatherHandler;
