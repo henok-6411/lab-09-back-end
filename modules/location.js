@@ -1,5 +1,5 @@
 'use strict';
-/// OUR DEPENDENCIES. 
+/// OUR DEPENDENCIES.
 const superagent = require('superagent');
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -58,6 +58,6 @@ function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
-///// EXPORT LOCATIONHANDLER . 
+///// EXPORT LOCATIONHANDLER .
 module.exports = locationHandler;
 
