@@ -18,13 +18,19 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(cors());
 
+
+const locationHandler = require('./modules/location.js');
+const weatherHandler = require('./modules/weather.js');
+const eventsHandler = require('./modules/events.js');
+const moviesHandler = require('./modules/movie.js');
+const yelpHandler = require('./modules/yelp.js');
+
 // ROUTES
 // route syntax = app.<operation>('route', callback);
 // Home page route for server testing
 app.get('/', (request, response) => {
   response.send('home page!');
 });
-
 app.get('/location', locationHandler);
 app.get('/weather', weatherHandler);
 app.get('/events', eventsHandler);
@@ -32,11 +38,6 @@ app.get('/yelp', yelpHandler);
 app.get('/movies', moviesHandler);
 
 ////
-const locationHandler = require('./modules/location.js');
-const weatherHandler = require('./modules/weather.js');
-const eventsHandler = require('./modules/events.js');
-const moviesHandler = require('./modules/movie.js');
-const yelpHandler = require('./modules/yelp.js');
 
 // Movie Handler function 
 
@@ -227,7 +228,10 @@ const yelpHandler = require('./modules/yelp.js');
 // Ensure the server is listening for requests
 // ***This must be at the end of the file***
 
-client.connect()
-  .then(() => {
-    app.listen(PORT, () => console.log(`Server up on port ${PORT}`))
-  });
+// client.connect()
+//   .then(() => {
+//     app.listen(PORT, () => console.log(`Server up on port ${PORT}`))
+//   });
+
+app.listen(PORT, () => console.log(`Server up on port ${PORT}`));
+

@@ -8,6 +8,7 @@ const pg = require('pg');
 // Application setup
 const client = new pg.Client(process.env.DATABASE_URL);
 client.on('error', err => console.err('pg problems', err));
+client.connect();
 
 // Location Object Constructor
 function Location(city, geoData) {
