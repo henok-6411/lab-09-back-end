@@ -1,8 +1,13 @@
 'use strict';
+//DEPENDENCIES 
+const superagent = require('superagent');
+
+////// YELP CONSTRACTOR FUNCTION
 
 // Load environment variables from the .env
 
 const superagent = require('superagent');
+
 
 function Yelp(yelpData) {
   this.name = yelpData.name;
@@ -11,6 +16,8 @@ function Yelp(yelpData) {
   this.rating = yelpData.rating;
   this.url = yelpData.url;
 }
+
+// FUNCTION YELP HANDLER 
 
 function yelpHandler(request, response) {
   let city = request.query.city;
@@ -24,6 +31,12 @@ function yelpHandler(request, response) {
     .catch(() => {
       errorHandler('sorry!!', request, response);
     })
+}
+// ERROR HANDLER .
+function errorHandler(error, request, response) {
+  response.status(500).send(error);
+}
+/// CONNECT MODULE 
 
 }
 
