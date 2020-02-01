@@ -17,6 +17,13 @@ client.on('error', err => console.err('pg problems', err));
 const app = express();
 app.use(cors());
 
+// ROUTES
+// route syntax = app.<operation>('route', callback);
+// Home page route for server testing
+app.get('/', (request, response) => {
+  response.send('home page!');
+});
+
 // CONNECTING OUR MODULE FUNCTION WITH OUR ROUTES. 
 const locationHandler = require('./modules/location.js');
 const moviesHandler = require('./modules/movie.js');
@@ -26,6 +33,7 @@ const eventsHandler = require('./modules/event.js');
 
 
 /// ROUTES TO SERVER 
+
 app.get('/location', locationHandler);
 app.get('/weather', weatherHandler);
 app.get('/events', eventsHandler);
@@ -35,3 +43,4 @@ app.get('/movies', moviesHandler);
 
 
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`))
+

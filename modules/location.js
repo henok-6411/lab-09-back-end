@@ -3,9 +3,9 @@
 const superagent = require('superagent');
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
-client.on('error', err => console.error(err));
-client.connect();
 
+client.on('error', err => console.err('pg problems', err));
+client.connect();
 
 // Location Object Constructor
 function Location(city, geoData) {
