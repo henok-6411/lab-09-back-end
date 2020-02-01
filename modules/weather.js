@@ -1,8 +1,10 @@
 'use strict';
 // DEPENDENCIES 
 const superagent = require('superagent');
-
 //WEATHER CONSTRACTOR . 
+
+const superagent = require('superagent');
+// WEATHER CONSTRACTOR 
 function Weather(weatherObj) {
   this.forecast = weatherObj.summary
   this.time = new Date(weatherObj.time * 1000).toString().slice(0, 15);

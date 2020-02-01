@@ -15,7 +15,8 @@ function Location(city, geoData) {
   this.longitude = geoData.lon;
 }
 
-// Location Functions .   
+
+// Location Functions
 function locationHandler(request, response) {
   // city is a query parameter : example location?city='denver'&name='bob'
   let city = request.query.city;
@@ -57,6 +58,6 @@ function errorHandler(error, request, response) {
   response.status(500).send(error);
 }
 
-
 ///// EXPORT LOCATIONHANDLER . 
 module.exports = locationHandler;
+

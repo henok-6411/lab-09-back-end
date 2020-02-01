@@ -7,6 +7,13 @@ const express = require('express');
 const cors = require('cors');
 //APPLICATION SETUP 
 const PORT = process.env.PORT;
+// const superagent = require('superagent');
+const pg = require('pg');
+
+
+// Application setup
+const client = new pg.Client(process.env.DATABASE_URL);
+client.on('error', err => console.err('pg problems', err));
 const app = express();
 app.use(cors());
 
@@ -24,6 +31,7 @@ app.get('/weather', weatherHandler);
 app.get('/events', eventsHandler);
 app.get('/yelp', yelpHandler);
 app.get('/movies', moviesHandler);
+
 
 
 app.listen(PORT, () => console.log(`Server up on port ${PORT}`))
