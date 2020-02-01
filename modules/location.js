@@ -1,5 +1,7 @@
 'use strict';
+
 /// OUR DEPENDENCIES.
+
 const superagent = require('superagent');
 const pg = require('pg');
 const client = new pg.Client(process.env.DATABASE_URL);
@@ -36,8 +38,8 @@ function locationHandler(request, response) {
             .then(data => {
               const geoData = data.body[0]; //first item
               const locationData = new Location(city, geoData);
-              const { search_query, formatted_query, latitude, longitude } = locationData;
-              let apiToSQL = `INSERT INTO locations (city, formattedquery, latitude, longitude) VALUES ('${search_query}', '${formatted_query}', '${latitude}', '${longitude}');`;
+              const { formatted_query, latitude, longitude } = locationData;
+              let apiToSQL = `INSERT INTO locations (city, formattedquery, latitude, longitude) VALUES ('${city}', '${formatted_query}', '${latitude}', '${longitude}');`;
 
               client.query(apiToSQL);
               response.send(locationData);

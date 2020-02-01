@@ -1,5 +1,7 @@
 'use strict';
+
 //DEPENDENCIES
+
 const superagent = require('superagent');
 
 ////// YELP CONSTRACTOR FUNCTION

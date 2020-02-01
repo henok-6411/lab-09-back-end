@@ -1,5 +1,8 @@
 'use strict';
+
+
 // DEPENDENCIES
+
 const superagent = require('superagent');
 
 // WEATHER CONSTRACTOR
