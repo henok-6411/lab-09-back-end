@@ -20,7 +20,7 @@ app.use(cors());
 
 // ROUTES
 // route syntax = app.<operation>('route', callback);
-// Home page route for server testing
+
 app.get('/', (request, response) => {
   response.send('home page!');
 });
